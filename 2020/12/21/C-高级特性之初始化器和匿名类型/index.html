@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -418,7 +418,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    7 分
                 </div>
                 
 
@@ -446,11 +446,20 @@ arr1[1] = 20;
 arr1[2] = 30;
 int[] arr2 = new int[] &#123; 10, 20, 30 &#125;;</code></pre>
 <h2 id="对象初始化器"><a href="#对象初始化器" class="headerlink" title="对象初始化器"></a>对象初始化器</h2><p>有如下的一个类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Student</span><br><span class="line">&#123;</span><br><span class="line">    public int Id &#123; get; set; &#125;</span><br><span class="line">    public string Name &#123; get; set; &#125;</span><br><span class="line">    public DateTime Birthday &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>    class Student
+    &#123;
+        public int Id &#123; get; set; &#125;
+        public string Name &#123; get; set; &#125;
+        public DateTime Birthday &#123; get; set; &#125;
+    &#125;</code></pre>
 <p>用普通方法创建和初始化一个对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student stu &#x3D; new Student();</span><br><span class="line">stu.Id &#x3D; 1;</span><br><span class="line">stu.Name &#x3D; &quot;张三&quot;;</span><br><span class="line">stu.Birthday &#x3D; Convert.ToDateTime(&quot;1996-1-1&quot;);</span><br></pre></td></tr></table></figure>
+<pre><code>    Student stu = new Student();
+    stu.Id = 1;
+    stu.Name = &quot;张三&quot;;
+    stu.Birthday = Convert.ToDateTime(&quot;1996-1-1&quot;);</code></pre>
 <p>用对象初始化器创建和初始化一个对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Student stu &#x3D; new Student &#123; Id &#x3D; 1, Name &#x3D; &quot;张三&quot;, </span><br><span class="line">    Birthday &#x3D; Convert.ToDateTime(&quot;1996-1-1&quot;) &#125;;</span><br></pre></td></tr></table></figure>
+<pre><code>    Student stu = new Student &#123; Id = 1, Name = &quot;张三&quot;, 
+        Birthday = Convert.ToDateTime(&quot;1996-1-1&quot;) &#125;;</code></pre>
 <p>&emsp;&emsp;对象初始化器允许在程序中通过声明的方式直接给对象属性进行数值的初始化，而不必刻意建立有参数的构造函数<br>对象初始化器与构造方法的异同点<br> &emsp;相同点:都可以完成对象属性的初始化<br> &emsp;不同点:</p>
 <ol>
 <li><p>构造函数具有强制性，而对象初始化器没有强制性</p>
@@ -461,26 +470,86 @@ int[] arr2 = new int[] &#123; 10, 20, 30 &#125;;</code></pre>
 </ol>
 <p>&emsp;&emsp;注意：使用初始化器时，要求相关的类中必须要有一个无参构造函数★★★★★  </p>
 <h2 id="集合初始化器"><a href="#集合初始化器" class="headerlink" title="集合初始化器"></a>集合初始化器</h2><p>用上面的类来创建和填充一个具有三个对象的泛型集合<br>普通方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Student stu1 &#x3D; new Student();</span><br><span class="line">stu1.Id &#x3D; 1;</span><br><span class="line">stu1.Name &#x3D; &quot;张三&quot;;</span><br><span class="line">stu1.Birthday &#x3D; Convert.ToDateTime(&quot;1996-1-1&quot;);</span><br><span class="line"></span><br><span class="line">Student stu2 &#x3D; new Student();</span><br><span class="line">stu2.Id &#x3D; 2;</span><br><span class="line">stu2.Name &#x3D; &quot;李四&quot;;</span><br><span class="line">stu2.Birthday &#x3D; Convert.ToDateTime(&quot;1996-1-2&quot;);</span><br><span class="line"></span><br><span class="line">Student stu3 &#x3D; new Student();</span><br><span class="line">stu3.Id &#x3D; 3;</span><br><span class="line">stu3.Name &#x3D; &quot;王五&quot;;</span><br><span class="line">stu3.Birthday &#x3D; Convert.ToDateTime(&quot;1996-1-3&quot;);</span><br><span class="line"></span><br><span class="line">List&lt;Student&gt; list &#x3D; new List&lt;Student&gt;();</span><br><span class="line">list.Add(stu1);</span><br><span class="line">list.Add(stu2); </span><br><span class="line">list.Add(stu3);</span><br></pre></td></tr></table></figure>
+<pre><code>    Student stu1 = new Student();
+    stu1.Id = 1;
+    stu1.Name = &quot;张三&quot;;
+    stu1.Birthday = Convert.ToDateTime(&quot;1996-1-1&quot;);
+
+    Student stu2 = new Student();
+    stu2.Id = 2;
+    stu2.Name = &quot;李四&quot;;
+    stu2.Birthday = Convert.ToDateTime(&quot;1996-1-2&quot;);
+
+    Student stu3 = new Student();
+    stu3.Id = 3;
+    stu3.Name = &quot;王五&quot;;
+    stu3.Birthday = Convert.ToDateTime(&quot;1996-1-3&quot;);
+
+    List&lt;Student&gt; list = new List&lt;Student&gt;();
+    list.Add(stu1);
+    list.Add(stu2); 
+    list.Add(stu3);</code></pre>
 <p>集合初始化器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Student&gt; list &#x3D; new List&lt;Student&gt;</span><br><span class="line">&#123;</span><br><span class="line">    new Student&#123;Id &#x3D; 1, Name &#x3D; &quot;张三&quot;, Birthday &#x3D; Convert.ToDateTime(&quot;1996-1-1&quot;)&#125;,</span><br><span class="line">    new Student&#123;Id &#x3D; 2, Name &#x3D; &quot;李四&quot;, Birthday &#x3D; Convert.ToDateTime(&quot;1996-1-2&quot;)&#125;,</span><br><span class="line">    new Student&#123;Id &#x3D; 3, Name &#x3D; &quot;王五&quot;, Birthday &#x3D; Convert.ToDateTime(&quot;1996-1-3&quot;)&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre><code>List&lt;Student&gt; list = new List&lt;Student&gt;
+&#123;
+    new Student&#123;Id = 1, Name = &quot;张三&quot;, Birthday = Convert.ToDateTime(&quot;1996-1-1&quot;)&#125;,
+    new Student&#123;Id = 2, Name = &quot;李四&quot;, Birthday = Convert.ToDateTime(&quot;1996-1-2&quot;)&#125;,
+    new Student&#123;Id = 3, Name = &quot;王五&quot;, Birthday = Convert.ToDateTime(&quot;1996-1-3&quot;)&#125;,
+&#125;;</code></pre>
 <p>注意：用初始化器，必须确保相关的类有一个公有的无参构造方法如果你在相关类中写了有参构造方法而将它的默认无参构造方法覆盖了，并且没有提供一个新的无参构造方法，那么使用对象初始化器编译的时候是不会通过的   </p>
 <h2 id="嵌套的初始化器"><a href="#嵌套的初始化器" class="headerlink" title="嵌套的初始化器"></a>嵌套的初始化器</h2><p>考虑如下的两个类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Address</span><br><span class="line">&#123;</span><br><span class="line">    public string Province &#123; get; set; &#125;</span><br><span class="line">    public string City &#123; get; set; &#125;</span><br><span class="line">    public string County &#123; get; set; &#125;</span><br><span class="line">    public string Street &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student</span><br><span class="line">&#123;</span><br><span class="line">    public int Id &#123; get; set; &#125;</span><br><span class="line">    public string Name &#123; get; set; &#125;</span><br><span class="line">    public DateTime Birthday &#123; get; set; &#125;</span><br><span class="line">    public Address Address &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>    class Address
+    &#123;
+        public string Province &#123; get; set; &#125;
+        public string City &#123; get; set; &#125;
+        public string County &#123; get; set; &#125;
+        public string Street &#123; get; set; &#125;
+    &#125;
+
+    class Student
+    &#123;
+        public int Id &#123; get; set; &#125;
+        public string Name &#123; get; set; &#125;
+        public DateTime Birthday &#123; get; set; &#125;
+        public Address Address &#123; get; set; &#125;
+    &#125;</code></pre>
 <p>&emsp;&emsp;&emsp;&emsp;请注意Student类中的Address属性的数据类型</p>
 <p>&emsp;&emsp;&emsp;&emsp;用对象初始化器初始化一个学员对象的代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Student stu &#x3D; new Student</span><br><span class="line">&#123;</span><br><span class="line">    Id &#x3D; 1,</span><br><span class="line">    Name &#x3D; &quot;张三&quot;,</span><br><span class="line">    Birthday &#x3D; Convert.ToDateTime(&quot;1996-1-1&quot;),</span><br><span class="line">    Address &#x3D; new Address</span><br><span class="line">    &#123;</span><br><span class="line">        Province &#x3D; &quot;湖南省&quot;,</span><br><span class="line">        City &#x3D; &quot;长沙市&quot;,</span><br><span class="line">        County &#x3D; &quot;雨花区&quot;,</span><br><span class="line">        Street &#x3D; &quot;香樟路601号&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre><code>    Student stu = new Student
+    &#123;
+        Id = 1,
+        Name = &quot;张三&quot;,
+        Birthday = Convert.ToDateTime(&quot;1996-1-1&quot;),
+        Address = new Address
+        &#123;
+            Province = &quot;湖南省&quot;,
+            City = &quot;长沙市&quot;,
+            County = &quot;雨花区&quot;,
+            Street = &quot;香樟路601号&quot;
+        &#125;
+    &#125;;</code></pre>
 <p>思考：用普通方法如何创建并初始化一个学员对象？</p>
 <hr>
 <h1 id="类型推断及匿名类型"><a href="#类型推断及匿名类型" class="headerlink" title="类型推断及匿名类型"></a>类型推断及匿名类型</h1><p><strong><em>一、类型推断</em></strong><br>    思考：在JavaScript中如何定义一个变量？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var i &#x3D; 5;</span><br><span class="line">var s &#x3D; &quot;abc&quot;;</span><br><span class="line">var b &#x3D; true;</span><br><span class="line">var now &#x3D; new Date();</span><br><span class="line">var arr &#x3D; new Array();</span><br><span class="line"></span><br><span class="line">i &#x3D; &quot;欧柏泰克软件学院&quot;;</span><br><span class="line">s &#x3D; 123;</span><br></pre></td></tr></table></figure>
+<pre><code>var i = 5;
+var s = &quot;abc&quot;;
+var b = true;
+var now = new Date();
+var arr = new Array();
+
+i = &quot;欧柏泰克软件学院&quot;;
+s = 123;</code></pre>
 <p>JavaScript属于弱类型化语言，而C#属于强类型化语言。</p>
 <p>C#中的关键字var，可以像JavaScrpit一样的方式来声明变量，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var i &#x3D; 5;</span><br><span class="line">var s &#x3D; &quot;abc&quot;;</span><br><span class="line"></span><br><span class="line">Console.WriteLine(i);</span><br><span class="line">Console.WriteLine(s);</span><br></pre></td></tr></table></figure>
+<pre><code>    var i = 5;
+    var s = &quot;abc&quot;;
+
+    Console.WriteLine(i);
+    Console.WriteLine(s);</code></pre>
 <p>&emsp;&emsp;var关键字用来隐式地声明一个数据类型，var不是一种新的数据类型，变量类型是在编译期确定的，而不是在运行时确定的，它是依赖于编译器根据所赋的值来自动确定变量的类型；并且一个变量一旦赋值，在后续的代码中就不能更改其数据类型。<br>&emsp;&emsp;如果编译器无法确定用var声明的变量类型，那代码就无法编译，因此，在用var声明变量时，必须同时初始化该变量，因为如果没有初始化值，编译器就不能确定变量的类型，比如下面的代码就无法编译：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var i;</span><br></pre></td></tr></table></figure>
+<pre><code>var i;</code></pre>
 <p>&emsp;&emsp;还可以用var关键字来声明并初始化数组：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; new[] &#123; 10, 20, 30 &#125;;</span><br></pre></td></tr></table></figure>
+<pre><code>var arr = new[] &#123; 10, 20, 30 &#125;;</code></pre>
 <p>&emsp;&emsp;注意：<br>&emsp;&emsp;&emsp;&emsp;对于一些名称比较长的类，类实例化的时候，可以用var关键字声明的变量接收  </p>
 <ol>
 <li>var 类型会被编译器根据初始值的类型推断出具体的类型;    </li>
@@ -492,13 +561,34 @@ int[] arr2 = new int[] &#123; 10, 20, 30 &#125;;</code></pre>
 <li>语句中只能声明一次变量，声明后不能更改类型；</li>
 </ol>
 <p><strong><em>二、匿名类型</em></strong><br>    在编写数据库应用程序中，我们需要编写实体类来对应数据库中的数据表，一个实体类对应于一个数据表。这些实体类往往只有一系列的属性，一个属性对应一个字段。比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Address</span><br><span class="line">&#123;</span><br><span class="line">    public string Province &#123; get; set; &#125;</span><br><span class="line">    public string City &#123; get; set; &#125;</span><br><span class="line">    public string County &#123; get; set; &#125;</span><br><span class="line">    public string Street &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>    class Address
+    &#123;
+        public string Province &#123; get; set; &#125;
+        public string City &#123; get; set; &#125;
+        public string County &#123; get; set; &#125;
+        public string Street &#123; get; set; &#125;
+    &#125;</code></pre>
 <p>这样的实体类仅仅用于存储结构化的数据，一个实例对于于数据表中的一行。编写这样的类往往比较单调。我们可以匿名类型来简化这一编程模型。其原理是使用C#编译器根据要存储的数据自动创建类型，而不是定义简单的数据存储类型。<br>&emsp;&emsp;可按如下的方式来实例化前面的Address类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Address address &#x3D; new Address </span><br><span class="line">&#123; </span><br><span class="line">    Province &#x3D; &quot;湖南省&quot;,</span><br><span class="line">    City &#x3D; &quot;长沙市&quot;,</span><br><span class="line">    County &#x3D; &quot;岳麓区&quot;,</span><br><span class="line">    Street &#x3D; &quot;桐梓坡路579号&quot;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre><code>    Address address = new Address 
+    &#123; 
+        Province = &quot;湖南省&quot;,
+        City = &quot;长沙市&quot;,
+        County = &quot;岳麓区&quot;,
+        Street = &quot;桐梓坡路579号&quot;
+    &#125;;</code></pre>
 <p>也可以使用匿名类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var address &#x3D; new </span><br><span class="line">&#123; </span><br><span class="line">    Province &#x3D; &quot;湖南省&quot;,</span><br><span class="line">    City &#x3D; &quot;长沙市&quot;,</span><br><span class="line">    County &#x3D; &quot;雨花区&quot;,</span><br><span class="line">    Street &#x3D; &quot;桐梓坡路579号&quot;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre><code>    var address = new 
+    &#123; 
+        Province = &quot;湖南省&quot;,
+        City = &quot;长沙市&quot;,
+        County = &quot;雨花区&quot;,
+        Street = &quot;桐梓坡路579号&quot;
+    &#125;;</code></pre>
 <p>区别有两点：第一，使用了var关键字；第二，在new的关键字后面没有指定类型名称，这是编译器确定我们要使用匿名类型的节奏。<br>    在IDE中，可以智能感知出匿名类型的成员：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(&quot;省：&#123;0&#125;&quot;, address.Province);</span><br><span class="line">Console.WriteLine(&quot;市：&#123;0&#125;&quot;, address.City);</span><br><span class="line">Console.WriteLine(&quot;县：&#123;0&#125;&quot;, address.County);</span><br><span class="line">Console.WriteLine(&quot;街道：&#123;0&#125;&quot;, address.Street);</span><br></pre></td></tr></table></figure>
+<pre><code>    Console.WriteLine(&quot;省：&#123;0&#125;&quot;, address.Province);
+    Console.WriteLine(&quot;市：&#123;0&#125;&quot;, address.City);
+    Console.WriteLine(&quot;县：&#123;0&#125;&quot;, address.County);
+    Console.WriteLine(&quot;街道：&#123;0&#125;&quot;, address.Street);</code></pre>
 <p>&emsp;&emsp;看得出来，Province、City、County、Street表现出来的是属性成员。<br>&emsp;&emsp;注意：<br>通过匿名类创建的属性属于只读属性。这意味着要修改属性的值，就不能用匿名类型！<br>new关键字和var配合使用<br>匿名类只能添加对象的属性</p>
 
                 
